@@ -38,6 +38,7 @@ const int pulsar_coords[][2] = {
 
 // Hammerhead spaceship pattern
 // The hammerhead spaceship is a pattern that moves
+// TODO : Invert the pattern to make it move to the right
 const int hammerhead_coords[][2] = {
         {1, 1}, {1, 2},{1, 3}, {2, 1}, {3, 1}, {4, 1}, {5, 1}, {6, 2}, {2, 4},
         {4, 5}, {5, 5}, {6, 6}, {7, 7}, {8, 8}, {9, 7}, {8, 9}, {9, 10}, {7, 10},{6, 11}, {5, 12}, {4, 12},
