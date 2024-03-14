@@ -9,8 +9,8 @@
 <h1 align="center">Game of Life</h1>
 
 <p align="center">
-  <a href=""><img src="https://img.shields.io/badge/C-GCC-blue.svg?style=for-the-badge&logo=c&logoColor=white"></a>
-  <a href=""><img src="https://img.shields.io/badge/SDL2-libsdl.org-red.svg?style=for-the-badge&logo=sdl&logoColor=white"></a>
+  <a href="https://gcc.gnu.org"><img src="https://img.shields.io/badge/C-GCC-blue.svg?style=for-the-badge&logo=c&logoColor=white"></a>
+  <a href="https://www.libsdl.org"><img src="https://img.shields.io/badge/SDL2-libsdl.org-red.svg?style=for-the-badge&logo=sdl&logoColor=white"></a>
 </p>
 
 <p align="center">
@@ -23,7 +23,8 @@
   <a href="#license">License</a>
 </p>
 
-![Game of Life Screenshot](img/app.gif)
+<img src="img/app.gif" width="100%">
+
 
 ## Description
 
