@@ -51,6 +51,7 @@ void Game_handleEvents(Game *game) {
 
             for (int i = 0; i < patterns_count; i++) {
                 if (event.key.keysym.sym == patterns[i].key) {
+                    //Grid_clear(&game->grid); // Uncomment this line to clear the grid before placing a pattern
                     placePattern(&game->grid, &patterns[i]);
                     break;
                 }
