@@ -6,6 +6,14 @@
 // src/patterns/patterns.c
 #include "../inc/patterns.h"
 
+// Glider pattern
+// The glider is a pattern that moves diagonally
+int glider_coords[][2] = {
+        {1, 2}, {2, 3}, {3, 1}, {3, 2}, {3, 3}
+};
+
+// Gosper Glider Gun pattern
+// The Gosper Glider Gun is the first known pattern with unbounded growth
 int glider_gun_coords[][2] = {
         {1, 5}, {1, 6}, {2, 5}, {2, 6},
         {11, 5}, {11, 6}, {11, 7}, {12, 4}, {12, 8}, {13, 3}, {13, 9}, {14, 3}, {14, 9}, {15, 6}, {16, 4}, {16, 8}, {17, 5}, {17, 6}, {17, 7}, {18, 6},
@@ -13,11 +21,16 @@ int glider_gun_coords[][2] = {
         {35, 3}, {35, 4}, {36, 3}, {36, 4}
 
 };
-// Other patterns
 
+int
+
+// Other patterns ...
+
+// Table of patterns
 Pattern patterns[] = {
-        {"Glider Gun", SDLK_g, glider_gun_coords, sizeof(glider_gun_coords)/sizeof(glider_gun_coords[0])},
-        // Other patterns
+        {"Glider", SDLK_h, glider_coords, sizeof(glider_coords)/sizeof(glider_coords[0])},
+        {"Gosper Glider Gun", SDLK_g, glider_gun_coords, sizeof(glider_gun_coords)/sizeof(glider_gun_coords[0])},
+        // Other patterns ...
 };
 
 // Number of patterns
