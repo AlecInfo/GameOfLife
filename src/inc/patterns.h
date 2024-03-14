@@ -12,7 +12,7 @@
 typedef struct {
     const char* name;
     const int key;
-    const int (*coords)[2];
+    const int (*const coords)[2];
     const int n_coords;
 } Pattern;
 

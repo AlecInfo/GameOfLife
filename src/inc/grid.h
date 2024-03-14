@@ -21,6 +21,7 @@ void Grid_update(Grid* grid);
 void Grid_render(Grid* grid, SDL_Renderer* renderer);
 void Grid_clean(Grid* grid);
 void Grid_clear(Grid* grid);
+int countAliveNeighbors(Grid* grid, int x, int y);
 void placePattern(Grid* grid, const Pattern* pattern);
 
 #endif
