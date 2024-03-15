@@ -1,9 +1,23 @@
-//
-// Created by ALEC PTT on 14.03.2024.
-// Last update on 14.03.2024.
-//
+/***********************************************************************
+ * Author: Alec Piette
+ * Created on: 14.03.2024
+ * Last updated on: 15.03.2024
+ *
+ * Project: Game of Life in C using SDL2
+ * File: patterns.c
+ * Description: Defines various patterns that can be placed in the Game of Life grid.
+ * Includes patterns like Glider, Gosper Glider Gun, and others, along with their
+ * initialization coordinates. Allows for dynamic placement of complex structures
+ * within the game.
+ *
+ * License: MIT License
+ * Repository: https://github.com/AlecInfo/GameOfLife
+ *
+ * This file is part of the Game of Life project. It contains definitions for several
+ * pre-defined patterns, enhancing the game by providing interesting starting points
+ * for the simulation. All rights reserved.
+ ***********************************************************************/
 
-// src/patterns/patterns.c
 #include "../inc/patterns.h"
 
 // Glider pattern
@@ -53,7 +67,7 @@ const int hammerhead_coords[][2] = {
         {15, 13}, {16, 13}, {16, 12}, {17, 12}, {17, 13}, {18, 13}, {18, 14}, {17, 14}, {16, 14}
 };
 
-// Table of patterns
+// Array of predefined patterns
 Pattern patterns[] = {
         {"Glider", SDLK_h, glider_coords, sizeof(glider_coords)/sizeof(glider_coords[0])},
         {"Glider Gun", SDLK_g, glider_gun_coords, sizeof(glider_gun_coords)/sizeof(glider_gun_coords[0])},

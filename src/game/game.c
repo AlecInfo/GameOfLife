@@ -1,9 +1,22 @@
-//
-// Created by ALEC PTT on 12.03.2024.
-// Last update on 12.03.2024.
-//
+/***********************************************************************
+ * Author: Alec Piette
+ * Created on: 12.03.2024
+ * Last updated on: 15.03.2024
+ *
+ * Project: Game of Life in C using SDL2
+ * File: game.c
+ * Description: Manages the main game lifecycle including initialization,
+ * event handling, updating game state, rendering, and cleanup. It orchestrates
+ * the game loop and processes user input to control the game.
+ *
+ * License: MIT License
+ * Repository: https://github.com/AlecInfo/GameOfLife
+ *
+ * This file is part of the Game of Life project. It serves as the core controller
+ * for the game, handling the primary game functions and SDL interactions.
+ * All rights reserved.
+ ***********************************************************************/
 
-// src/game/game.c
 #include "../inc/patterns.h"
 #include "../inc/game.h"
 #include "../inc/constants.h"

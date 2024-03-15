@@ -1,15 +1,27 @@
 #!/bin/bash
-
-# ----------------------------
+#######################################################################
+# Author: Alec Piette
+# Created on: 14.03.2024
+# Last updated on: 15.03.2024
 #
-#  Compilation of the GameOfLife project
+# Project: Game of Life in C using SDL2
+# File: build.sh
+# Description: This script automates the compilation and linking process
+# for the Game of Life project. It supports building the main application
+# as well as a separate test executable if requested. Utilizes GCC for
+# compilation, linking against the SDL2 library for graphical output.
 #
-#      File:    build.sh
-#   Project:    GameOfLife
-#    Author:    Alec Piette
-#   Created:    14/03/2024
+# Usage:
+#   - To compile the main application: ./build.sh
+#   - To compile and run tests: ./build.sh test
 #
-# ----------------------------
+# License: MIT License
+# Repository: https://github.com/AlecInfo/GameOfLife
+#
+# This script is part of the Game of Life project. It simplifies the process of
+# building the application, ensuring that all necessary source files are compiled
+# and linked correctly to produce the executable. All rights reserved.
+#######################################################################
 
 
 # Directory where source files are located

@@ -1,14 +1,34 @@
-//
-// Created by ALEC PTT on 12.03.2024.
-// Last update on 12.03.2024.
-//
+/***********************************************************************
+ * Author: Alec Piette
+ * Created on: 12.03.2024
+ * Last updated on: 15.03.2024
+ *
+ * Project: Game of Life in C using SDL2
+ * File: grid.c
+ * Description: Implements the grid functionalities for the Game of Life,
+ * including initializing the grid, updating cell states according to the
+ * game rules, rendering the grid, and handling user-defined patterns.
+ *
+ * License: MIT License
+ * Repository: https://github.com/AlecInfo/GameOfLife
+ *
+ * This file is part of the Game of Life project. It includes operations for
+ * managing the game grid, such as cell updates and pattern placement,
+ * essential for simulating Conway's Game of Life. All rights reserved.
+ ***********************************************************************/
 
-// src/grid/grid.c
 #include "../inc/grid.h"
 #include "../inc/patterns.h"
 #include "../inc/constants.h"
 #include <stdlib.h>
 
+/**
+ * Initializes the grid with the specified width and height.
+ *
+ * @param grid The grid to initialize
+ * @param width The width of the grid
+ * @param height The height of the grid
+ */
 void Grid_init(Grid* grid, int width, int height) {
     grid->width = width;
     grid->height = height;
@@ -22,6 +42,11 @@ void Grid_init(Grid* grid, int width, int height) {
     }
 }
 
+/**
+ * Updates the grid according to the rules of the Game of Life.
+ *
+ * @param grid The grid to update
+ */
 void Grid_update(Grid* grid) {
     // Create a new grid to store the new state of the cells
     Cell** newCells = malloc(sizeof(Cell*) * grid->height);
@@ -47,7 +72,12 @@ void Grid_update(Grid* grid) {
     grid->cells = newCells;
 }
 
-
+/**
+ * Renders the grid on the screen.
+ *
+ * @param grid The grid to render
+ * @param renderer The SDL renderer to use
+ */
 void Grid_render(Grid* grid, SDL_Renderer* renderer) {
     for (int i = 0; i < grid->height; i++) {
         for (int j = 0; j < grid->width; j++) {
@@ -56,6 +86,11 @@ void Grid_render(Grid* grid, SDL_Renderer* renderer) {
     }
 }
 
+/**
+ * Cleans up the grid, freeing the memory allocated for the cells.
+ *
+ * @param grid The grid to clean up
+ */
 void Grid_clean(Grid* grid) {
     for (int i = 0; i < grid->height; i++) {
         free(grid->cells[i]);
@@ -63,6 +98,11 @@ void Grid_clean(Grid* grid) {
     free(grid->cells);
 }
 
+/**
+ * Clears the grid, setting all cells to dead.
+ *
+ * @param grid The grid to clear
+ */
 void Grid_clear(Grid* grid) {
     for (int i = 0; i < grid->height; i++) {
         for (int j = 0; j < grid->width; j++) {
@@ -71,6 +111,15 @@ void Grid_clear(Grid* grid) {
     }
 }
 
+/**
+ * Counts the number of alive neighbors around a cell.
+ *
+ * @param grid The grid containing the cell
+ * @param x The x-coordinate of the cell
+ * @param y The y-coordinate of the cell
+ *
+ * @return The number of alive neighbors
+ */
 int countAliveNeighbors(Grid* grid, int x, int y) {
     int aliveNeighbors = 0;
     for (int i = -1; i <= 1; i++) {
@@ -90,6 +139,12 @@ int countAliveNeighbors(Grid* grid, int x, int y) {
     return aliveNeighbors;
 }
 
+/**
+ * Places a pattern on the grid at the specified coordinates.
+ *
+ * @param grid The grid to place the pattern on
+ * @param pattern The pattern to place
+ */
 void placePattern(Grid* grid, const Pattern* pattern) {
     for (int i = 0; i < pattern->n_coords; i++) {
         int x = pattern->coords[i][0];

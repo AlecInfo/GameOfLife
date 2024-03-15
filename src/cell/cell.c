@@ -1,12 +1,33 @@
-//
-// Created by ALEC PTT on 12.03.2024.
-// Last update on 12.03.2024.
-//
+/***********************************************************************
+ * Author: Alec Piette
+ * Created on: 12.03.2024
+ * Last updated on: 15.03.2024
+ *
+ * Project: Game of Life in C using SDL2
+ * File: cell.c
+ * Description: This file contains the implementation of the cell behavior
+ * within the Game of Life project. It defines the rendering logic for each
+ * cell in the grid, determining its color based on its current state.
+ *
+ * License: MIT License
+ * Repository: https://github.com/AlecInfo/GameOfLife
+ *
+ * This file is part of the Game of Life project. It encapsulates the logic
+ * required to render a cell on the grid. All rights reserved.
+ ***********************************************************************/
 
-// src/cell/cell.c
 #include "../inc/cell.h"
 #include "../inc/constants.h"
 
+/**
+ * Renders a cell at the specified position with the given size.
+ *
+ * @param cell The cell to render
+ * @param renderer The renderer to use
+ * @param x The x position of the cell
+ * @param y The y position of the cell
+ * @param cellSize The size of the cell
+ */
 void Cell_render(Cell* cell, SDL_Renderer* renderer, int x, int y, int cellSize) {
     SDL_Rect rect;
     rect.x = x;

@@ -1,7 +1,21 @@
-//
-// Created by ALEC PTT on 14.03.2024.
-// Last update on 14.03.2024.
-//
+/***********************************************************************
+ * Author: Alec Piette
+ * Created on: 12.03.2024
+ * Last updated on: 15.03.2024
+ *
+ * Project: Game of Life in C using SDL2
+ * File: constants.h
+ * Description: Contains all the global constants used throughout the
+ * Game of Life project. This includes definitions for window dimensions,
+ * cell sizes, and color codes, ensuring a centralized management of these constants.
+ *
+ * License: MIT License
+ * Repository: https://github.com/AlecInfo/GameOfLife
+ *
+ * This file is a part of the Game of Life project. It serves as a repository for
+ * constants, facilitating easy modifications to the game's visual and operational parameters.
+ * All rights reserved.
+ ***********************************************************************/
 
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
