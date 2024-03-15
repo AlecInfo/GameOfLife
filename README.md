@@ -60,6 +60,8 @@ Use these keys to interact with the game:
 
 - `h`: Spawn a Glider.
 - `g`: Spawn a Gosper Glider Gun.
+- `p`: Spawn a Pulsar.
+- `m`: Spawn a Hammerhead
 - `c`: Clear the grid.
 - `ESC`: Quit the game.
 
