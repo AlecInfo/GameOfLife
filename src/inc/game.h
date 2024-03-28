@@ -32,6 +32,7 @@ typedef struct Game {
     SDL_Window* window; // The SDL window for the game
     SDL_Renderer* renderer; // The SDL renderer for the game
     int isRunning; // A flag indicating whether the game is running
+    int isPaused; // A flag indicating whether the game is paused
     Grid grid; // The game grid
 } Game;
 
