@@ -1,7 +1,7 @@
 /***********************************************************************
  * Author: Alec Piette
  * Created on: 12.03.2024
- * Last updated on: 15.03.2024
+ * Last updated on: 29.03.2024
  *
  * Project: Game of Life in C using SDL2
  * File: game.h
