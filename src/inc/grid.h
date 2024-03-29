@@ -1,7 +1,7 @@
 /***********************************************************************
  * Author: Alec Piette
  * Created on: 12.03.2024
- * Last updated on: 15.03.2024
+ * Last updated on: 29.03.2024
  *
  * Project: Game of Life in C using SDL2
  * File: grid.h
@@ -87,7 +87,20 @@ int countAliveNeighbors(Grid* grid, int x, int y);
  *
  * @param grid A pointer to the Grid structure.
  * @param pattern A pointer to the Pattern structure.
+ * @param x The x-coordinate to place the pattern.
+ * @param y The y-coordinate to place the pattern.
  */
-void placePattern(Grid* grid, const Pattern* pattern);
+void placePattern(Grid* grid, const Pattern* pattern, int x, int y);
+
+/**
+ * Renders a preview of the pattern on the grid.
+ *
+ * @param grid A pointer to the Grid structure.
+ * @param pattern A pointer to the Pattern structure.
+ * @param x The x-coordinate to render the pattern.
+ * @param y The y-coordinate to render the pattern.
+ * @param renderer A pointer to the SDL_Renderer.
+ */
+void Grid_renderPatternPreview(Grid* grid, SDL_Renderer* renderer, const Pattern* pattern, int x, int y);
 
 #endif

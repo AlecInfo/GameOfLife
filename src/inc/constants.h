@@ -1,7 +1,7 @@
 /***********************************************************************
  * Author: Alec Piette
  * Created on: 12.03.2024
- * Last updated on: 15.03.2024
+ * Last updated on: 29.03.2024
  *
  * Project: Game of Life in C using SDL2
  * File: constants.h
@@ -29,5 +29,7 @@
 #define ALIVE_COLOR         0xFFFFFFFF      // The color of an alive cell (white)
 #define DEAD_COLOR          0x000000FF      // The color of a dead cell (black)
 #define BACKGROUND_COLOR    0x000000FF      // The color of the background (black)
+
+#define PREVIEW_COLOR       0x00FF00FF      // The color of the preview cell (green)
 
 #endif

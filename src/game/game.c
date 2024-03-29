@@ -35,6 +35,10 @@ void Game_init(Game *game, const char *title, int width, int height) {
     game->renderer = SDL_CreateRenderer(game->window, -1, 0);
     game->isRunning = 1;
     game->isPaused = 0;
+    game->isInPatternPlacementMode = 0;
+    game->patternPlacementX = 0;
+    game->patternPlacementY = 0;
+    game->selectedPattern = NULL;
 
     // Initialize the objects ...
     Grid_init(&game->grid, width / CELL_SIZE, height / CELL_SIZE); // 10x10 pixels per cell
@@ -71,29 +75,47 @@ void Game_handleEvents(Game *game) {
         if (event.type == SDL_QUIT) {
             game->isRunning = 0; // Quit the game
         } else if (event.type == SDL_KEYDOWN) {
+            if (game->isInPatternPlacementMode) {
+                switch (event.key.keysym.sym) {
+                    case SDLK_UP:
+                        game->patternPlacementY = fmax(0, game->patternPlacementY - 1);
+                        break;
+                    case SDLK_DOWN:
+                        game->patternPlacementY = fmin(game->grid.height - 1, game->patternPlacementY + 1);
+                        break;
+                    case SDLK_LEFT:
+                        game->patternPlacementX = fmax(0, game->patternPlacementX - 1);
+                        break;
+                    case SDLK_RIGHT:
+                        game->patternPlacementX = fmin(game->grid.width - 1, game->patternPlacementX + 1);
+                        break;
+                    case SDLK_RETURN:
+                        placePattern(&game->grid, game->selectedPattern, game->patternPlacementX, game->patternPlacementY);
+                        game->isInPatternPlacementMode = 0;
+                        break;
+                }
+            } else {
+                // Quit the game
+                if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    game->isRunning = 0;
+                }
 
-            // Quit the game
-            if (event.key.keysym.sym == SDLK_ESCAPE) {
-                game->isRunning = 0;
-            }
+                // Clear the grid
+                if (event.key.keysym.sym == SDLK_c) {
+                    Grid_clear(&game->grid);
+                }
 
-            // Clear the grid
-            if (event.key.keysym.sym == SDLK_c) {
-                Grid_clear(&game->grid);
-            }
+                // Pause the game
+                if (event.key.keysym.sym == SDLK_SPACE) {
+                    game->isPaused = !game->isPaused;
+                }
 
-            // Pause the game
-            if (event.key.keysym.sym == SDLK_SPACE) {
-                game->isPaused = !game->isPaused;
-            }
-
-            for (int i = 0; i < patterns_count; i++) {
-                if (event.key.keysym.sym == patterns[i].key) {
-                    //Grid_clear(&game->grid); // Uncomment this line to clear the grid before placing a pattern
-
-                    // Place the pattern on the grid
-                    placePattern(&game->grid, &patterns[i]);
-                    break;
+                // For each pattern, check if the key pressed matches the pattern key
+                for (int i = 0; i < patterns_count; i++) {
+                    if (event.key.keysym.sym == patterns[i].key) {
+                        game->isInPatternPlacementMode = 1;
+                        game->selectedPattern = &patterns[i];
+                    }
                 }
             }
         }
@@ -126,6 +148,10 @@ void Game_render(Game *game) {
 
     // Render the objects ...
     Grid_render(&game->grid, game->renderer);
+
+    if (game->isInPatternPlacementMode && game->selectedPattern != NULL) {
+        Grid_renderPatternPreview(&game->grid, game->renderer, game->selectedPattern, game->patternPlacementX, game->patternPlacementY);
+    }
 
     SDL_RenderPresent(game->renderer);
 }

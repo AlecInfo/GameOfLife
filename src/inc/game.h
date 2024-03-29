@@ -34,6 +34,10 @@ typedef struct Game {
     int isRunning; // A flag indicating whether the game is running
     int isPaused; // A flag indicating whether the game is paused
     Grid grid; // The game grid
+    int isInPatternPlacementMode; // A flag indicating whether the game is in pattern mode
+    int patternPlacementX; // The x-coordinate for pattern placement
+    int patternPlacementY; // The y-coordinate for pattern placement
+    const Pattern* selectedPattern; // The selected pattern for placement
 } Game;
 
 /**

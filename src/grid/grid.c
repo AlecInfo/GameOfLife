@@ -1,7 +1,7 @@
 /***********************************************************************
  * Author: Alec Piette
  * Created on: 12.03.2024
- * Last updated on: 15.03.2024
+ * Last updated on: 29.03.2024
  *
  * Project: Game of Life in C using SDL2
  * File: grid.c
@@ -142,15 +142,38 @@ int countAliveNeighbors(Grid* grid, int x, int y) {
 /**
  * Places a pattern on the grid at the specified coordinates.
  *
- * @param grid The grid to place the pattern on
- * @param pattern The pattern to place
+ * @param p_grid The grid to place the pattern on
+ * @param p_pattern The pattern to place
  */
-void placePattern(Grid* grid, const Pattern* pattern) {
+void placePattern(Grid* p_grid, const Pattern* p_pattern, int p_x, int p_y) {
+    for (int i = 0; i < p_pattern->n_coords; i++) {
+        int x = p_pattern->coords[i][0] + p_x;
+        int y = p_pattern->coords[i][1] + p_y;
+        if (x < p_grid->width && y < p_grid->height) {
+            p_grid->cells[y][x].isAlive = 1;
+        }
+    }
+}
+
+/**
+ * Renders a preview of the pattern at the specified coordinates.
+ *
+ * @param grid The grid to render the preview on
+ * @param renderer The SDL renderer to use
+ * @param pattern The pattern to render
+ * @param x The x-coordinate of the preview
+ * @param y The y-coordinate of the preview
+ */
+void Grid_renderPatternPreview(Grid* grid, SDL_Renderer* renderer, const Pattern* pattern, int x, int y) {
+    SDL_SetRenderDrawColor(renderer, (PREVIEW_COLOR >> 24) & 0xFF, (PREVIEW_COLOR >> 16) & 0xFF, (PREVIEW_COLOR >> 8) & 0xFF, PREVIEW_COLOR & 0xFF);
+
     for (int i = 0; i < pattern->n_coords; i++) {
-        int x = pattern->coords[i][0];
-        int y = pattern->coords[i][1];
-        if (x < grid->width && y < grid->height) {
-            grid->cells[y][x].isAlive = 1;
+        int cellX = x + pattern->coords[i][0];
+        int cellY = y + pattern->coords[i][1];
+
+        if (cellX < grid->width && cellY < grid->height) {
+            SDL_Rect rect = {cellX * CELL_SIZE, cellY * CELL_SIZE, CELL_SIZE, CELL_SIZE};
+            SDL_RenderFillRect(renderer, &rect);
         }
     }
 }
