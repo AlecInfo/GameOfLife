@@ -43,11 +43,24 @@ void Game_init(Game *game, const char *title, int width, int height) {
     // Initialize the objects ...
     Grid_init(&game->grid, width / CELL_SIZE, height / CELL_SIZE); // 10x10 pixels per cell
 
-    // Print the instructions
-    printf("Press the following keys to spawn patterns:\n");
+    // Print the welcome message and instructions
+    printf("###########################################\n");
+    printf("#              Game of Life               #\n");
+    printf("###########################################\n");
+    printf("\n");
+    printf("[Instructions]\n");
+    printf("  * 'c'        - Clear the grid \n");
+    printf("  * SPACE      - Pause/Unpause the game \n");
+    printf("  * ESCAPE     - Quit the game \n");
+    printf("  * Arrow Keys - Move the pattern \n");
+    printf("  * RETURN     - Place the pattern \n");
+    printf("\n");
+    printf("[Patterns]\n");
     for (int i = 0; i < patterns_count; i++) {
-        printf("Press '%c' for %s\n", patterns[i].key, patterns[i].name);
+        printf("  * '%c'       - Place the %s pattern\n", patterns[i].key, patterns[i].name);
     }
+    printf("###########################################\n");
+
 }
 
 /**
